@@ -1,0 +1,159 @@
+/* Reset */
+body {
+  margin: 0;
+  padding: 0;
+}
+/* End Reset */
+
+.main {
+  grid-area: content;
+}
+.aside {
+  background-color: #f2f2f2;
+  grid-area: sidebar;
+}
+.footer {
+  background-color: royalblue;
+  grid-area: footer;
+}
+
+/* ==== Mobile first ==== */
+body {
+  display: grid;
+  min-height: 100vh;
+  min-width: 100%;
+  grid-template-rows: 1fr 90px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "content"
+    "footer";
+  font-family: "Lato", sans-serif;
+  color: #222;
+  font-size: 0.8em;
+}
+
+/* hide icons */
+.aside i {
+  display: none;
+}
+
+/* == Main == */
+img {
+  max-width: 100%;
+}
+
+.main__header {
+  display: grid;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #4e4e4e;
+  grid-template-areas:
+    "img"
+    "dtls";
+  margin-bottom: 10px;
+  padding: 20px;
+}
+.main__header > .img {
+  grid-area: img;
+}
+.main__header > .details {
+  grid-area: dtls;
+}
+
+.main__body {
+  padding: 8px;
+  background-color: #fff;
+}
+.main__body > div {
+  padding: 8px;
+  display: flex;
+}
+/* Changing even numbers background colors */
+.main__body > div:nth-child(2n) {
+  background-color: #f2f2f2;
+}
+.main__body > div p {
+  flex: 0 0 25%;
+}
+
+/*===============
+  clean ups.
+===============*/
+.details {
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+  color: #fff;
+  padding-left: 50px;
+}
+.details div:nth-child(1) {
+  margin-bottom: auto;
+}
+.details div:nth-child(2) {
+  margin-top: 0;
+}
+.details div:nth-child(2) i.fa {
+  font-size: 0.9rem;
+  padding: 0 0.7rem;
+  font-weight: 300;
+}
+.details div:nth-child(1) p:first-child {
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+}
+.details div:nth-child(1) p:not(:first-child) {
+  font-size: 0.9rem;
+  margin: 2px 0;
+}
+
+/* === larger Screens === */
+@media only screen and (min-width: 600px) {
+  body {
+    grid-template-columns: 60px 1fr;
+    grid-template-areas:
+      "sidebar content"
+      "footer footer";
+  }
+
+  /* == Sidebar == */
+  .aside {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+  .aside i {
+    display: block;
+  }
+  /* = End Sidebar = */
+
+  /* == Main == */
+  .main__header {
+    grid-template-columns: 250px 1fr;
+    grid-template-areas: "img dtls";
+  }
+  /* == End Main == */
+}
+
+/* === Mobile: Phones === */
+@media screen and (max-height: 600px) {
+  /* just look Pretty */
+  .sm--hide {
+    display: none;
+  }
+  .sm-text-right {
+    text-align: right;
+  }
+  /* == Main == */
+  .main__header {
+    justify-content: center;
+  }
+  .main__header > .details {
+    text-align: center;
+  }
+  .img > img {
+    width: 150px;
+  }
+  .main__body > div p {
+    flex: 0 0 50%;
+  }
+  /* == End Main == */
+}
